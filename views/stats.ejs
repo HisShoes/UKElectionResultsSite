@@ -10,53 +10,47 @@
             <p>Here's how Britain voted.</p>
         </div>
         <div class="ui inverted large header">
-            <i class="angle down icon"></i>
+            <!-- <a href="#stats" id="stats"></a> -->
+                <i class="angle down icon"></i>
         </div>
     </div>
 </div>
 
 
 <div class="ui inverted vertical masthead center aligned segment">
-    <div class="ui text container">
-        
     <div class="ui top attached tabular menu inverted horizontal-flex">
-      <a class="item" data-tab="second">
-            <div class="ui inverted medium header">
-                <p>2016</p>
-            </div>
-        </a>
-            
-        <a class="item active" data-tab="first">
-            <div class="ui inverted huge header">
-                <p>2017</p>
-            </div>
-        </a>
-            
-        <a class="item" data-tab="third">
-            <div class="ui inverted medium header">
-                <p>2015</p>
-            </div>
-        </a>
+        <% indices.forEach(function(index) { %>
+            <a class="item <% if(index==elections.length){ %> active <% } %>" data-tab="election-<%= index-1 %>">
+                <%= elections[index-1].year %>
+            </a>
+        <% }) %>
     </div>
- 
     
-        <div data-tab="first" class="ui inverted statistics one">
-            <% parties.forEach(function(party) { %>
-            
-                <div class="ui inverted <%= party.color %> statistic">
-                    <div class="label" >
-                        <%= party.stats[0].leader %>
+    <div class="ui text container">
+        <% elections.forEach(function(election, index) { %>
+            <div data-tab="election-<%= index %>" class="ui inverted statistics tab one <% if(index==elections.length-1){ %> active <% } %> stats-container">
+                <% election.topParties.forEach(function(party) { %>
+                    <div class="ui inverted <%= party.color %> statistic">
+                        <% if(party.leader) { %>
+                            <div class="label" >
+                                <%= party.leader %>
+                            </div>
+                        <% } %>
+                        <div class="value">
+                            <%= party.seats %>
+                        </div>
+                        <div class="label">
+                            <%= party.name %> - <%= party.representation %>
+                        </div>
                     </div>
-                    <div class="value">
-                        <%= party.stats[0].seats %>
-                    </div>
-                    <div class="label">
-                        <%= party.name %> - <%= party.stats[0].representation %>
-                    </div>
-                </div>
-            <% }) %>
-        </div>
+                <% }) %>
+            </div>
+        <% }) %>
     </div>
 </div>
+
+<script>
+    $('.tabular.menu .item').tab();
+</script>
 
 <% include ./partials/footer %>

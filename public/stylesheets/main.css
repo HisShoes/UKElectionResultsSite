@@ -17,3 +17,10 @@
     justify-content: center;
     align-items: center;
 }
+
+.stats-container {
+    background-color: #3D3E3F;
+    padding-top: 10px;
+    border: white solid 1px; 
+    border-radius:5px;
+}

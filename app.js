@@ -5,7 +5,7 @@ var express      = require("express"),
     mongoose     = require("mongoose");
 
 //my requires
-var Party        = require("./models/parties");
+var Election        = require("./models/elections");
 
 //init database, not always required
 var seedDB = require("./seed.js");
@@ -22,12 +22,14 @@ app.get("/", function(req, res) {
 });
 
 app.get("/stats", function(req, res) {
-    Party.find({}, function(err, parties){
+    Election.find({}, function(err, elections){
         if(err) {
             console.log(err);
-            res.redirecct("/");
+            res.redirect("/");
         } else {
-            res.render("stats", {parties: parties});   
+            //create a list of indices to represent the order the tabs will show
+            var indices = getElectionTabOrder(elections);
+            res.render("stats", {elections: elections, indices: indices});   
         }
     })
 });
@@ -36,3 +38,19 @@ app.get("/stats", function(req, res) {
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log('Politics Server Started');
 });
+
+
+function getElectionTabOrder(elections) {
+    var indices = [];
+    var append = false;
+    for(var i = elections.length; i > 0; i--)
+    {
+        if(append){
+            indices.push(i);
+        } else {
+            indices.unshift(i);
+        }
+        append = !append;
+    }
+    return indices;
+}
