@@ -1,6 +1,21 @@
 <% include ./partials/header %>
 
-<div class="ui inverted vertical masthead center aligned segment">
+ 
+<div class="ui inverted secondary pointing menu borderless top fixed ">
+    <div class="ui inverted segment">
+        <a class="item" href="/">
+              Home
+        </a>
+        <a class="item active" href="/stats">
+          Stats
+        </a>
+        <a class="item" href="/api">
+          API
+        </a>
+    </div>
+</div>
+    
+<div class="ui inverted vertical masthead center aligned segment full-screen">
     <div class="ui text container">
         
         <div class="ui inverted huge header">
@@ -17,7 +32,7 @@
 </div>
 
 
-<div class="ui inverted vertical masthead center aligned segment">
+<div class="ui inverted vertical masthead center aligned segment full-screen">
     <div class="ui top attached tabular menu inverted horizontal-flex">
         <% indices.forEach(function(index) { %>
             <a class="item <% if(index==elections.length){ %> active <% } %>" data-tab="election-<%= index-1 %>">

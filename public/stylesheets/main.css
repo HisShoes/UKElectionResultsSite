@@ -1,14 +1,12 @@
-.container {
-    background-color: rgb(28,28,28);
-}
-
-
 .masthead.segment {
-    height:100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.full-screen {
+    height: 100%;
 }
 
 .horizontal-flex {
@@ -23,4 +21,9 @@
     padding-top: 10px;
     border: white solid 1px; 
     border-radius:5px;
+}
+
+.api-tut {
+    background-color: #3D3E3F;
+    border: white solid 1px; 
 }

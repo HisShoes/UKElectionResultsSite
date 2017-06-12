@@ -1,0 +1,144 @@
+<% include ./partials/header %>
+
+<div class="ui inverted secondary pointing menu borderless top fixed ">
+    <div class="ui inverted segment">
+        <a class="item" href="/">
+              Home
+        </a>
+        <a class="item" href="/stats">
+          Stats
+        </a>
+        <a class="item active" href="/api">
+          API
+        </a>
+    </div>
+</div>
+  
+<div class="ui inverted vertical masthead center aligned segment">
+    <div class="ui segment grey inverted left aligned">
+        <h1>What is it?</h1>
+        <div class="ui segment olive center aligned">
+            <p> We store details on 5 groups in recent elections. </p>
+            <p> The top 4 parties have their own group. </p>
+            <p> All other parties combine to make the fifth.</p>
+            
+            <p>
+                This API exposes access to this data.
+            </p>
+        </div>
+        
+        <h1>Where to send your requests:</h1>
+        <div class="ui segment yellow center aligned">
+            https://webdevbootcamp-hisshoes.c9users.io/elections/"Your Request"
+        </div>
+        
+        <h1>What to put in your requests:</h1>
+        <div class="ui segment orange center aligned">
+            <p>Parameters should be seperated by &</p>
+            <table class="ui single line table striped">
+                <thead>
+                    <tr>
+                      <th>Parameter</th>
+                      <th>Description</th>
+                      <th>Example Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Year</td>
+                        <td>Year of election</td>
+                        <td>2017</td>
+                    </tr>
+                    <tr>
+                        <td>topParties.name</td>
+                        <td>Name of a top party for a given election</td>
+                        <td>Labour</td>
+                    </tr>
+                    <tr>
+                        <td>topParties.leader</td>
+                        <td>Name of a top party leader for a given election</td>
+                        <td>Theresea May</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <h1>What to expect back:</h1>
+        <div class="ui segment red center aligned">
+            <p>A JSON object containing the following:</p>
+            <table class="ui single line table striped">
+                <thead>
+                    <tr>
+                      <th>Value</th>
+                      <th>Type</th>
+                      <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Year</td>
+                        <td>String</td>
+                        <td>Year of election</td>
+                    </tr>
+                    <tr>
+                        <td>topParties</td>
+                        <td>Object</td>
+                        <td>List of the top parties</td>
+                    </tr>
+                </tbody>
+                
+                <table class="ui structured table striped single line">
+                    <thead>
+                        <th colspan="3">topParties</th>
+                        <tr>
+                            <th>Value</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>leader</td>
+                            <td>Party leader for this election</td>
+                        </tr>
+                        <tr>
+                            <td>name</td>
+                            <td>Name of the party (Other for collective)</td>
+                        </tr>
+                        <tr>
+                            <td>color</td>
+                            <td>Color used to represent party</td>
+                        </tr>
+                        <tr>
+                            <td>seats</td>
+                            <td>Number of seats the part won</td>
+                        </tr>
+                        <tr>
+                            <td>representation</td>
+                            <td>Percentage of seats the party won</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </table>
+        </div>
+        
+        <h1>Examples:</h1>
+        <div class="ui segment pink">
+            <div class="ui vertical segment">
+              <p>https://webdevbootcamp-hisshoes.c9users.io/elections/year=2017</p>
+            </div>
+            <div class="ui vertical segment">
+              <p>webdevbootcamp-hisshoes.c9users.io/elections/topParties.name=SNP</p>
+            </div>
+            <div class="ui vertical segment">
+              <p>webdevbootcamp-hisshoes.c9users.io/elections/year=2017&topParties.name=SNP</p>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+    
+
+
+<% include ./partials/footer %>
