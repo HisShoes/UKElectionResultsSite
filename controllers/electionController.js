@@ -46,16 +46,23 @@ function convertRepresentation(party) {
     this.representation = this.representation/10 + "%";
 };
 
-//parse the request string
 
-//TODO - Complicate this by abstracting what the user passes in to get a return
+//mapping for the request parameters so that users don't need to pass in
+//some ugly parameters
+var paramMapping = {
+    year: 'year',
+    leader: 'topParties.leader',
+    party: 'topParties.name'
+};
+
+//parse the request string
 function parseElectionRequest(reqString) {
     reqString = reqString.replace(/[^a-zA-Z0-9=&\. ]/g, '');
     var reqObject = {};
     var listOfParams = reqString.split("&");
     
     listOfParams.forEach(function(param) {
-       reqObject[param.split("=")[0]] = param.split("=")[1];
+       reqObject[paramMapping[param.split("=")[0]]] = param.split("=")[1];
     });
     
     return reqObject;

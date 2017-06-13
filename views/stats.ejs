@@ -1,7 +1,7 @@
 <% include ./partials/header %>
 
  
-<div class="ui inverted secondary pointing menu borderless top fixed ">
+<div class="ui inverted secondary pointing menu borderless top fixed">
     <div class="ui inverted segment">
         <a class="item" href="/">
               Home
@@ -16,7 +16,7 @@
 </div>
     
 <div class="ui inverted vertical masthead center aligned segment full-screen">
-    <div class="ui text container">
+    <div class="ui text container animated-fadein">
         
         <div class="ui inverted huge header">
             <p>650 Seats.</p>
@@ -25,15 +25,14 @@
             <p>Here's how Britain voted.</p>
         </div>
         <div class="ui inverted large header">
-            <!-- <a href="#stats" id="stats"></a> -->
-                <i class="angle down icon"></i>
+             <a href="#stats" id="stats" class="scroll-link"><!-- -->
+                <i class="angle down icon"></i> </a>
         </div>
     </div>
 </div>
 
-
 <div class="ui inverted vertical masthead center aligned segment full-screen">
-    <div class="ui top attached tabular menu inverted horizontal-flex">
+    <div class="ui top attached tabular menu inverted horizontal-flex animated-fadein">
         <% indices.forEach(function(index) { %>
             <a class="item <% if(index==elections.length){ %> active <% } %>" data-tab="election-<%= index-1 %>">
                 <%= elections[index-1].year %>
@@ -41,7 +40,7 @@
         <% }) %>
     </div>
     
-    <div class="ui text container">
+    <div class="ui text container animated-fadein">
         <% elections.forEach(function(election, index) { %>
             <div data-tab="election-<%= index %>" class="ui inverted statistics tab one <% if(index==elections.length-1){ %> active <% } %> stats-container">
                 <% election.topParties.forEach(function(party) { %>
@@ -63,9 +62,5 @@
         <% }) %>
     </div>
 </div>
-
-<script>
-    $('.tabular.menu .item').tab();
-</script>
 
 <% include ./partials/footer %>
