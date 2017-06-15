@@ -1,3 +1,7 @@
+body {
+    background-color: #1B1C1D;
+}
+
 .masthead.segment {
     display: flex;
     flex-direction: column;
@@ -26,4 +30,12 @@
 .api-tut {
     background-color: #3D3E3F;
     border: white solid 1px; 
+}
+
+#stats {
+  color:inherit;
+}
+
+.ui.menu.fixed {
+    width: auto;
 }
